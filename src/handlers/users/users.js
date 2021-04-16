@@ -1,6 +1,9 @@
-export const put = async (ctx, next) => {
+import { fetch } from '../../model/users';
+
+export const get = async (ctx, next) => {
   ctx.status = 200;
-  ctx.body = { users: [] };
+  const users = await fetch();
+  ctx.body = { users };
   await next();
   return ctx.body;
 };
