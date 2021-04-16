@@ -64,10 +64,19 @@ describe('users.get', () => {
     expect(mockCtx.status).toBe(200);
     expect(mockCtx.body.users).toStrictEqual(mockUsers);
   });
-  test('should filter users by email if emailContains filter provided', async () => {
+  test('should filter users by email', async () => {
     const mockCtx = {
       query: {
         emailContains: 'gmail',
+      },
+    };
+    await get(mockCtx, noop);
+    expect(mockCtx.body.users).toStrictEqual([mockUsers[0]]);
+  });
+  test('should filter users by email independently of the case', async () => {
+    const mockCtx = {
+      query: {
+        emailContains: 'GMAIL',
       },
     };
     await get(mockCtx, noop);

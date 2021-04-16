@@ -18,7 +18,7 @@ const applyFilters = (users, params) => {
 
 const applyEmailFilter = (users, params) => {
   if (params.emailContains) {
-    return users.filter((user) => user.email.includes(params.emailContains));
+    return users.filter((user) => user.email.toLowerCase().includes(params.emailContains.toLowerCase()));
   } else {
     return users;
   }
