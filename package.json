@@ -4,7 +4,7 @@
   "description": "Users api",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js --exec babel-node --presets env",
+    "start": "nodemon --exec babel-node src/index.js",
     "test": "jest"
   },
   "repository": {
@@ -23,8 +23,10 @@
     "koa": "^2.13.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.15",
     "nodemon": "^2.0.7"
   }
 }
