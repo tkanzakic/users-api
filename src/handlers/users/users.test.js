@@ -67,7 +67,20 @@ describe('users.get', () => {
       },
     };
     await get(mockCtx, noop);
-    expect(mockCtx.status).toBe(200);
     expect(mockCtx.body.users).toStrictEqual([mockUsers[0]]);
+  });
+  test('should only return requested fields', async () => {
+    const mockCtx = {
+      query: {
+        emailContains: 'gmail',
+        fields: ['id', 'name', 'email'],
+      },
+    };
+    await get(mockCtx, noop);
+    expect(mockCtx.body.users[0]).toStrictEqual({
+      id: mockUsers[0].id,
+      name: mockUsers[0].name,
+      email: mockUsers[0].email,
+    });
   });
 });
