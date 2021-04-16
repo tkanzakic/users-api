@@ -51,6 +51,10 @@ const mockUsers = [
 jest.mock('../../model/users', () => ({
   fetch: async () => Promise.resolve(mockUsers),
 }));
+const mockCalcCrow = jest.fn();
+jest.mock('../../utils/distance', () => ({
+  calcCrow: () => mockCalcCrow(),
+}));
 
 describe('users.get', () => {
   const noop = () => {};
@@ -82,5 +86,28 @@ describe('users.get', () => {
       name: mockUsers[0].name,
       email: mockUsers[0].email,
     });
+  });
+  test('should filter by 10 km distance', async () => {
+    mockCalcCrow.mockReturnValueOnce(11);
+    mockCalcCrow.mockReturnValueOnce(10);
+    const mockCtx = {
+      query: {
+        coordinate: [0, 0],
+      },
+    };
+    await get(mockCtx, noop);
+    expect(mockCtx.body.users).toStrictEqual([mockUsers[1]]);
+  });
+  test('should filter by given distance', async () => {
+    mockCalcCrow.mockReturnValueOnce(15);
+    mockCalcCrow.mockReturnValueOnce(16);
+    const mockCtx = {
+      query: {
+        coordinate: [0, 0],
+        radius: 15,
+      },
+    };
+    await get(mockCtx, noop);
+    expect(mockCtx.body.users).toStrictEqual([mockUsers[0]]);
   });
 });
