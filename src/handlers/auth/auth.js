@@ -7,7 +7,7 @@ export const authenticate = async (ctx, next) => {
     await next();
   } else {
     ctx.status = 403;
-    ctx.body = { code: ctx.status, data: { error: 'Forbidden' } };
+    ctx.body = { code: ctx.status, message: 'Forbidden' };
     return ctx.body;
   }
 };
