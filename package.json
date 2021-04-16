@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/tkanzakic/users-api/issues"
   },
-  "homepage": "https://github.com/tkanzakic/users-api#readme"
+  "homepage": "https://github.com/tkanzakic/users-api#readme",
+  "dependencies": {
+    "7": "^0.0.1",
+    "koa": "^2.13.1"
+  }
 }
