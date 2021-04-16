@@ -1,0 +1,19 @@
+{
+  "name": "users-api",
+  "version": "1.0.0",
+  "description": "Users api",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tkanzakic/users-api.git"
+  },
+  "author": "Takeichi Kanzaki Cabrera <tkanzakic@hey.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tkanzakic/users-api/issues"
+  },
+  "homepage": "https://github.com/tkanzakic/users-api#readme"
+}
